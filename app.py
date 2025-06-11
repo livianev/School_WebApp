@@ -4,6 +4,7 @@ app = Flask(__name__, static_folder='static')
 
 @app.route('/')
 def mural():
+    print
     return render_template('mural.html')
 
 @app.route('/login', methods=['GET', 'POST'])
