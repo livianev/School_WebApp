@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Mural de Avisos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <title>Instituto Futuro Brilhante</title>
 </head>
 
 
@@ -15,13 +15,18 @@
 <body>
 
     <header>
-        <h1>Instituto Futuro Brilhante</h1>
 
-        <img src="https://png.pngtree.com/png-clipart/20230107/original/pngtree-school-and-education-logo-png-image_8882085.png"
-            alt="School and education logo"  class="logo">
-        <img src="https://cdn.icon-icons.com/icons2/3054/PNG/512/account_profile_user_icon_190494.png" alt="login"
-            class="login">
+       
+            <h1>Instituto Futuro Brilhante</h1>
 
+            <img src="https://png.pngtree.com/png-clipart/20230107/original/pngtree-school-and-education-logo-png-image_8882085.png"
+                alt="School and education logo" class="logo">
+
+                <a href="/login">
+            <img src="https://cdn.icon-icons.com/icons2/3054/PNG/512/account_profile_user_icon_190494.png" alt="login"
+                class="login">
+       </a>
+      
     </header>
 
     <main>
@@ -30,15 +35,19 @@
             <h2>Mural de Avisos</h2 class="mural">
             <p>Bem-vindo ao mural de avisos da escola! Aqui você encontra as últimas notícias e eventos importantes.</p>
             <p>Para mais informações, faça seu login e entre em contato com a secretaria da escola.</p>
-            <nav>
-                <ul>
+
+            <div class="aviso-container">
+                <ul class="avisos">
                     <li><strong>Prova de Matemática:</strong> 15 de setembro</li>
                     <li><strong>Festa Junina:</strong> 24 de junho</li>
                     <li><strong>Reunião de Pais:</strong> 30 de agosto</li>
 
                 </ul>
+                <img src="https://png.pngtree.com/png-vector/20240530/ourmid/pngtree-cute-teacher-and-students-teaching-in-front-of-classroom-lesson-board-png-image_12545503.png"
+                    alt="Alunos e professora" class="mural-img">
 
-            </nav>
+            </div>
+
         </section>
 
 
@@ -48,10 +57,7 @@
                 <p id="noticia-texto"></p>
             </div>
 
-            <div class="botoes">
-                <button onclick="anteriorNoticia()">⟨</button>
-                <button onclick="proximaNoticia()">⟩</button>
-            </div>
+           
         </section>
     </main>
 

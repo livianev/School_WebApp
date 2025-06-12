@@ -35,6 +35,6 @@ function anteriorNoticia() {
 
 window.onload = () => {
     mostrarNoticia(indiceAtual);
-    setInterval(proximaNoticia, 7000); // troca automática
+    setInterval(proximaNoticia, 5000); // troca automática
 };
 

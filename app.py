@@ -10,7 +10,7 @@ def mural():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # Aqui valida o login com o banco de dados
+        # valida o login com o banco de dados
         return redirect(url_for('painel'))
     return render_template('login.html')
 
