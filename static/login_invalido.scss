@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f8ff;
+     font-family: "Barlow Condensed", sans-serif;
+}
+
+h1 {
+    color: rgb(233, 152, 76);
+    text-align: center;
+    font-size: 2em;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+a{
+    text-decoration: none;
+    color: #5ea6d6;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
