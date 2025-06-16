@@ -42,9 +42,10 @@ def login_invalido():
 @app.route('/home')
 def painel():
     if 'aluno' in session:
-        return f"Bem-vindo, {session['aluno']}! Esta é a área privada do aluno."
+        return render_template('aluno.html')  # Aqui renderiza o HTML corretamente
     else:
         return redirect(url_for('login'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

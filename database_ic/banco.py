@@ -48,6 +48,10 @@ CREATE TABLE IF NOT EXISTS boletins (
 )
 ''')
 
+
+
+
+
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS frequencias (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -55,15 +59,6 @@ CREATE TABLE IF NOT EXISTS frequencias (
     data TEXT,
     presente BOOLEAN,
     FOREIGN KEY (aluno_id) REFERENCES alunos(id)
-)
-''')
-
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS avisos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    titulo TEXT,
-    conteudo TEXT,
-    data TEXT
 )
 ''')
 
