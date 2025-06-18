@@ -50,6 +50,9 @@ body h2 {
   text-align: center;
   font-size: 1.5em;
 }
+body .mural {
+  margin-top: 25px;
+}
 body p {
   color: rgb(58, 58, 83);
   text-align: center;
@@ -99,9 +102,6 @@ body footer {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-body footer h2 {
-  color: rgb(13, 13, 43);
 }
 body footer li {
   color: rgb(58, 58, 83);
