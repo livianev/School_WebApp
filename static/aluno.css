@@ -14,6 +14,15 @@ h1 {
   color: rgb(13, 13, 43);
   text-align: center;
   align-items: center;
-  height: 20vh;
+  height: 8vh;
   margin-top: 25px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: rgb(13, 13, 43);
+  text-align: center;
+  align-items: center;
+  height: 15vh;
+  margin-top: 5px;
 }/*# sourceMappingURL=aluno.css.map */

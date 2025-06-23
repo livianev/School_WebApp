@@ -16,7 +16,10 @@ def verificar_login(email, senha):
     cur.execute("SELECT * FROM alunos WHERE email = ? AND senha = ?", (email, senha))
     aluno = cur.fetchone()
     con.close()
-    return aluno
+    if aluno:
+      return {'nome': aluno[1]}
+    return None
+    
 
 @app.route('/')
 def mural():
@@ -29,7 +32,7 @@ def login():
         senha = request.form['senha']
         aluno = verificar_login(email, senha)
         if aluno:
-            session['aluno'] = email
+            session['aluno'] = aluno
             return redirect(url_for('painel'))
         else:
             return redirect(url_for('login_invalido'))
@@ -42,9 +45,18 @@ def login_invalido():
 @app.route('/home')
 def painel():
     if 'aluno' in session:
-        return render_template('aluno.html')  # Aqui renderiza o HTML corretamente
+        return render_template('aluno.html', aluno=session['aluno'])  # Aqui renderiza o HTML corretamente
     else:
         return redirect(url_for('login'))
+    
+    @app.route('/aluno')
+    def aluno():
+        if 'aluno' in session:
+            return render_template('aluno.html', aluno=session['aluno'])
+        else:
+                return redirect(url_for('login'))
+        
+
 
 
 if __name__ == '__main__':
