@@ -15,17 +15,43 @@
 
     <header>
         <h1>Olá, {{ aluno.nome }}!</h1>
-        <h2>Esta é a sua área reservada no ambiente virtual do Instituto Futuro Brilhante.</h2>
+        <h2 class="subtitulo-boas-vindas">Esta é a sua área reservada no ambiente virtual do Instituto Futuro Brilhante.</h2>
     </header>
 
-</body>
+    <main>
+        <section>
+            <h2 class="titulo-informacoes">Informações Pessoais</h2>
+            <p><strong>Nome:</strong> {{ aluno.nome }}</p>
+            <p><strong>Email:</strong> {{ aluno.email }}</p>
+        </section>
 
- <footer>
+        <section>
+            <h2 class="titulo-notas">Notas</h2>
+            <ul>
+                {% for disciplina, nota in aluno.notas %}
+                <li>{{ disciplina }}: {{ nota }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="titulo-faltas">Faltas</h2>
+            <p>Total de faltas: {{ aluno.faltas }}</p>
+       
+    </main>
+
+
+    <footer>
+        <h3>Instituto Futuro Brilhante</h3>
         <ul>
         <li>Instituto Futuro Brilhante &copy; 2025</li>
         <li>Todos os direitos reservados.</li>
         <li>Em casos de dúvida e urgências, entre em contato com a secretaria da escola.</li>
     </ul>
     </footer>
+
+</body>
+
+ 
 
 </html>

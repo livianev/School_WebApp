@@ -15,10 +15,30 @@ def verificar_login(email, senha):
     cur = con.cursor()
     cur.execute("SELECT * FROM alunos WHERE email = ? AND senha = ?", (email, senha))
     aluno = cur.fetchone()
+    if aluno:
+        aluno_id = aluno[0]
+        nome = aluno[1]
+        turma = aluno[2]
+        email = aluno[3]
+
+        # Buscar notas
+        cur.execute("SELECT disciplina, nota FROM avaliacoes WHERE aluno_id = ?", (aluno_id,))
+        notas = cur.fetchall()
+
+        con.close()
+
+        return {
+            'id': aluno_id,
+            'nome': nome,
+            'turma': turma,
+            'email': email,
+            'notas': notas
+        }
     con.close()
     if aluno:
       return {'nome': aluno[1]}
     return None
+
     
 
 @app.route('/')
