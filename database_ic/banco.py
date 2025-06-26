@@ -84,8 +84,6 @@ for aluno_id in range(1, 31): # IDs dos alunos de 1 a 30
         nota = round(random.uniform(0.0, 10.0), 1) # nota entre 0.0 e 10.0
         if nota >=7.0:
             aprovacao = 'Aprovado'
-        elif nota >= 5.0:
-            aprovacao = 'Em Recuperação'
         else:  
             aprovacao = 'Reprovado'
             
