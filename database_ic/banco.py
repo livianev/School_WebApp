@@ -70,7 +70,6 @@ CREATE TABLE IF NOT EXISTS avaliacoes (
 ''')
 
 
-
 import random
 
 disciplinas = [
@@ -78,6 +77,15 @@ disciplinas = [
      "Física", "Química", "Biologia", "Educação Física",
      "Arte", "Língua Estrangeira Moderna (Inglês)"
  ]
+
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS faltas (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+data DATE  NOT NULL,
+aluno_id INTEGER NOT NULL,
+FOREIGN KEY (aluno_id) REFERENCES alunos(id)
+)
+''')
 
 for aluno_id in range(1, 31): # IDs dos alunos de 1 a 30
     for disciplina in disciplinas:
@@ -92,7 +100,26 @@ for aluno_id in range(1, 31): # IDs dos alunos de 1 a 30
  VALUES (?, ?, ?, ?)
  ''', (aluno_id, disciplina, nota, aprovacao))
         
- # Gera notas aleatórias para cada disciplina
+    
+
+#Gerando notas aleatórias para cada disciplina
+
+
+from datetime import datetime, timedelta 
+
+#datetime para trabalhar com datas e horas
+#timedelta para representar uma diferença de tempo (ex: adicionar dias a uma data)
+
+for _ in range(100):
+ aluno_id = random.randint(1, 30) # IDs de 1 a 30
+ dias_aleatorios = random.randint(0, 200)
+ data = datetime(2025, 3, 1) + timedelta(days=dias_aleatorios)
+ data_formatada = data.strftime('%Y-%m-%d')
+
+ cursor.execute('''
+ INSERT INTO faltas (data, aluno_id)
+ VALUES (?, ?)
+ ''', (data_formatada, aluno_id))
 
 
 

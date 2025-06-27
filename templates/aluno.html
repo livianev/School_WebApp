@@ -15,7 +15,8 @@
 
     <header>
         <h1>Olá, {{ aluno.nome }}!</h1>
-        <h2 class="subtitulo-boas-vindas">Esta é a sua área reservada no ambiente virtual do Instituto Futuro Brilhante.</h2>
+        <h2 class="subtitulo-boas-vindas">Esta é a sua área reservada no ambiente virtual do Instituto Futuro Brilhante.
+        </h2>
     </header>
 
     <main>
@@ -36,16 +37,21 @@
 
         <section>
             <h2 class="titulo-faltas">Faltas</h2>
-            <p>Total de faltas: {{ aluno.faltas }}</p>
-       
+            <ul>
+                {%for data, faltas in faltas %}
+                <li>Total de faltas: {{ faltas }}</li>
+                {% endfor %}
+            </ul>
+
+
     </main>
 
 
     <footer>
         <ul>
-        <li>Instituto Futuro Brilhante &copy; 2025</li>
-        <li>Todos os direitos reservados.</li>
-    </ul>
+            <li>Instituto Futuro Brilhante &copy; 2025</li>
+            <li>Todos os direitos reservados.</li>
+        </ul>
     </footer>
 
 </body>
