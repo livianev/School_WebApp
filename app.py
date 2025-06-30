@@ -62,20 +62,30 @@ def login():
 def login_invalido():
     return render_template('login_invalido.html')
 
+
 @app.route('/home')
 def painel():
     if 'aluno' in session:
-        return render_template('aluno.html', aluno=session['aluno'])  # Aqui renderiza o HTML corretamente
+        aluno = session['aluno']
+        aluno_id = aluno['id']
+
+        # Conectar ao banco e buscar faltas
+        con = sqlite3.connect(caminho_banco)
+        cur = con.cursor()
+        cur.execute('''
+            SELECT data, COUNT(*) as total_faltas
+            FROM faltas
+            WHERE aluno_id = ?
+            GROUP BY data
+            ORDER BY data
+        ''', (aluno_id,))
+        faltas = cur.fetchall()
+        con.close()
+
+        return render_template('aluno.html', aluno=aluno, faltas=faltas)
     else:
         return redirect(url_for('login'))
-    
-    @app.route('/aluno')
-    def aluno():
-        if 'aluno' in session:
-            return render_template('aluno.html', aluno=session['aluno'])
-        else:
-                return redirect(url_for('login'))
-        
+
 
 
 

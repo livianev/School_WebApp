@@ -11,6 +11,7 @@
     <title>área privada</title>
 </head>
 
+
 <body>
 
     <header>
@@ -29,20 +30,25 @@
         <section class="notas">
             <h2 class="titulo-notas">Notas</h2>
             <ul>
-                {% for disciplina, nota in aluno.notas %}
+                {%for disciplina, nota in aluno.notas%}
                 <li>{{ disciplina }}: {{ nota }}</li>
                 {% endfor %}
             </ul>
         </section>
 
-        <section>
+        <section class="faltas">
             <h2 class="titulo-faltas">Faltas</h2>
-            <ul>
-                {%for data, faltas in faltas %}
-                <li>Total de faltas: {{ faltas }}</li>
-                {% endfor %}
-            </ul>
+            <div id="faltas-container">
+                <p id="faltas-texto"></p>
+            </div>
 
+
+            <div class="botoes-navegacao">
+                <button onclick="voltarFalta()">Anterior</button>
+                <button onclick="proximaFalta()">Próxima</button>
+            </div>
+
+        </section>
 
     </main>
 
@@ -54,6 +60,19 @@
         </ul>
     </footer>
 
+
+    <script>
+   
+const faltas = [
+ {% for data, total in faltas %}
+ { data: "{{ data }}", total: "{{ total }}" }{% if not loop.last %},{% endif %}
+ {% endfor %}
+];
+
+</script>
+
+    <script src="{{ url_for('java', filename='faltas.js') }}"></script>
+    
 </body>
 
 
