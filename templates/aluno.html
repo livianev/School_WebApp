@@ -2,56 +2,61 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
         href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='aluno.css') }}">
+        rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='aluno.css') }}" />
     <title>área privada</title>
 </head>
 
-
 <body>
-
     <header>
         <h1>Olá, {{ aluno.nome }}!</h1>
-        <h2 class="subtitulo-boas-vindas">Esta é a sua área reservada no ambiente virtual do Instituto Futuro Brilhante.
+        <h2 class="subtitulo-boas-vindas">
+            Esta é a sua área reservada no ambiente virtual do Instituto Futuro
+            Brilhante.
         </h2>
     </header>
 
     <main>
-        <section class="informacoes-pessoais">
-            <h2 class="titulo-informacoes">Informações Pessoais</h2>
-            <p><strong>Nome:</strong> {{ aluno.nome }}</p>
-            <p><strong>Email:</strong> {{ aluno.email }}</p>
-        </section>
 
-        <section class="notas">
-            <h2 class="titulo-notas">Notas</h2>
-            <ul>
-                {%for disciplina, nota in aluno.notas%}
-                <li>{{ disciplina }}: {{ nota }}</li>
-                {% endfor %}
-            </ul>
-        </section>
+        <div class="container-notas-faltas">
 
-        <section class="faltas">
-            <h2 class="titulo-faltas">Faltas</h2>
-            <div id="faltas-container">
-                <p id="faltas-texto"></p>
-            </div>
+            <section class="notas">
+
+                <h2 class="titulo-notas">Notas</h2>
+
+                <ul>
+                    {% for disciplina, nota in aluno.notas %}
+                    <li><strong>{{ disciplina }}</strong>: {{ nota }}</li>
+                    {% endfor %}
+                </ul>
+
+            </section>
 
 
-            <div class="botoes-navegacao">
-                <button onclick="voltarFalta()">Anterior</button>
-                <button onclick="proximaFalta()">Próxima</button>
-            </div>
+            <section class="faltas">
 
-        </section>
+                <h2 class="titulo-faltas">Faltas</h2>
 
+                <div id="faltas-container">
+
+                    <p id="faltas-texto"></p>
+
+                </div>
+
+
+                <div class="botoes-navegacao">
+                    <button onclick="voltarFalta()">Anterior</button>
+                    <button onclick="proximaFalta()">Próxima</button>
+                </div>
+
+            </section>
+
+        </div>
     </main>
-
 
     <footer>
         <ul>
@@ -60,20 +65,16 @@
         </ul>
     </footer>
 
-
     <script>
-   
-const faltas = [
- {% for data, total in faltas %}
- { data: "{{ data }}", total: "{{ total }}" }{% if not loop.last %},{% endif %}
- {% endfor %}
-];
 
-</script>
+        const faltas = [
+            {% for data, total in faltas %}
+        { "data": "{{ data }}", "total": { { total } } } {% if not loop.last %}, {% endif %}
+        {% endfor %}
+      ];
+    </script>
 
-    <script src="{{ url_for('java', filename='faltas.js') }}"></script>
-    
+    <script src="{{ url_for('static', filename='faltas.js') }}"></script>
 </body>
-
 
 </html>

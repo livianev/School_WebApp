@@ -6,7 +6,7 @@ function mostrarFalta(indiceAtual) {
      if (faltas.length > 0 && texto) {
          const falta = faltas[indiceAtual];
          console.log("Mostrando faltas:", falta);
-        texto.textContent = `Data: ${falta.data}  ${falta.total}`;
+        texto.textContent = `Data: ${falta.data}`;
 
  }
 }
