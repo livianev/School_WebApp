@@ -66,11 +66,10 @@
     </footer>
 
     <script>
-
         const faltas = [
-            {% for data, total in faltas %}
-        { "data": "{{ data }}", "total": { { total } } } {% if not loop.last %}, {% endif %}
-        {% endfor %}
+        {% for data, total in faltas %}
+        { data: "{{ data }}", "total": {{ total }} } {% if not loop.last %}, {% endif %}
+            {% endfor %}
       ];
     </script>
 
