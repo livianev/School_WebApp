@@ -75,7 +75,7 @@ import random
 disciplinas = [
      "Língua Portuguesa", "Matemática", "História", "Geografia",
      "Física", "Química", "Biologia", "Educação Física",
-     "Arte", "Língua Estrangeira Moderna (Inglês)"
+     "Arte", "Inglês"
  ]
 
 cursor.execute('''
@@ -114,7 +114,7 @@ for _ in range(100):
  aluno_id = random.randint(1, 30) # IDs de 1 a 30
  dias_aleatorios = random.randint(0, 200)
  data = datetime(2025, 3, 1) + timedelta(days=dias_aleatorios)
- data_formatada = data.strftime('%Y-%m-%d')
+ data_formatada = data.strftime('%d-%m-%Y')
 
  cursor.execute('''
  INSERT INTO faltas (data, aluno_id)

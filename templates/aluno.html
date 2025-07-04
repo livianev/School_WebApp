@@ -43,7 +43,7 @@
 
                 <div id="faltas-container">
 
-                    <p id="faltas-texto"></p>
+                    <p class="quant-faltas" id="faltas-texto"></p>
 
                 </div>
 
@@ -67,9 +67,9 @@
 
     <script>
         const faltas = [
-        {% for data, total in faltas %}
-        { data: "{{ data }}", "total": {{ total }} } {% if not loop.last %}, {% endif %}
-            {% endfor %}
+            {% for data, total in faltas %}
+        { data: "{{ data }}", total: {{ total }} } {% if not loop.last %}, {% endif %}
+        {% endfor %}
       ];
     </script>
 
